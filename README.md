@@ -28,7 +28,7 @@ cd ong-ssvp
 pnpm install
 ```
 
-4. Configure o arquivo `.env` na raiz do projeto:
+4. Crie o arquivo `.env` na raiz do projeto, utilizando o `.env.example` como referência. Configure a porta:
 
 ```env
 PORT=3001
@@ -50,22 +50,23 @@ pnpm run api
 pnpm run dev
 ```
 
-Acesse o endereço apresentado pelo Vite no navegador.
+Acesse o endereço apresentado pelo Vite+ no navegador, normalmente:
+
+http://localhost:5173
 
 ## Teste da API
 
 Acesse:
 
-```text
 http://localhost:3001/api/health
-```
 
 A resposta esperada é semelhante a:
 
 ```json
 {
   "status": "ok",
-  "timestamp": "16/11/2026, 20:00:00"
+  "app": "ONG SSVP",
+  "hora": "2026-11-17T00:02:21.298Z"
 }
 ```
 
@@ -77,4 +78,5 @@ A resposta esperada é semelhante a:
 - JavaScript
 - Node.js
 - Express
+- dotenv
 - Git e GitHub

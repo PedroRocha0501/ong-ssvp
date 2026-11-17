@@ -11,10 +11,11 @@ async function carregarStatus() {
       <main style="font-family: sans-serif; padding: 2rem;">
         <h1>ONG SSVP</h1>
         <p><strong>Status da API: ${dados.status}</strong></p>
-        <p>Data e hora: ${dados.timestamp}</p>
+        <p>Data e hora: ${dados.hora}</p>
       </main>
     `;
   } catch (erro) {
+    console.error("Erro ao conectar com a API:", erro);
     app.innerHTML = `
       <main style="font-family: sans-serif; padding: 2rem;">
         <h1>ONG SSVP</h1>
@@ -24,4 +25,4 @@ async function carregarStatus() {
   }
 }
 
-carregarStatus();
+void carregarStatus();

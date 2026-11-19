@@ -1,0 +1,224 @@
+@api = http://localhost:3001/api
+
+### Cadastrar voluntário
+POST {{api}}/voluntarios
+Content-Type: application/json
+
+{
+  "nome": "Carlos Oliveira",
+  "telefone": "12966665555",
+  "email": "carlos.invalido@ssvp.com",
+  "senha": "123"
+}
+
+### Listar voluntários
+GET {{api}}/voluntarios
+
+### Consultar voluntário por ID
+GET {{api}}/voluntarios/7
+### Consultar voluntário inexistente
+GET {{api}}/voluntarios/9999
+
+### Atualizar voluntário
+PUT {{api}}/voluntarios/7
+Content-Type: application/json
+
+{
+  "nome": "Carlos Oliveira Atualizado",
+  "telefone": "12966665555",
+  "email": "carlos.teste@ssvp.com",
+  "situacao": "ATIVO"
+}
+### Testar atualização de voluntário com dados vazios
+PUT {{api}}/voluntarios/7
+Content-Type: application/json
+
+{}
+### Desativar voluntário
+PATCH {{api}}/voluntarios/7/desativar
+### Listar famílias assistidas
+GET {{api}}/familias
+### Consultar família por ID
+GET {{api}}/familias/1
+
+### Consultar família inexistente
+GET {{api}}/familias/9999
+
+### Cadastrar família assistida
+POST {{api}}/familias
+Content-Type: application/json
+
+{
+  "nome_responsavel": "Ana Oliveira",
+  "telefone": "12977776666",
+  "cep": "12230000",
+  "logradouro": "Rua das Flores",
+  "numero": "250",
+  "complemento": "Casa 2",
+  "bairro": "Jardim Paulista",
+  "cidade": "Sao Jose dos Campos",
+  "estado": "SP",
+  "quantidade_pessoas": 5
+}
+### Consultar família recém-cadastrada
+GET {{api}}/familias/2
+
+### Atualizar família assistida
+PUT {{api}}/familias/2
+Content-Type: application/json
+
+{
+  "nome_responsavel": "Ana Oliveira Atualizada",
+  "telefone": "12977776666",
+  "cep": "12230000",
+  "logradouro": "Rua das Flores",
+  "numero": "250",
+  "complemento": "Casa 2",
+  "bairro": "Jardim Paulista",
+  "cidade": "Sao Jose dos Campos",
+  "estado": "SP",
+  "quantidade_pessoas": 6
+}
+### Consultar família atualizada
+GET {{api}}/familias/2
+### Desativar família assistida
+PATCH {{api}}/familias/2/desativar
+
+### Consultar família por ID
+GET {{api}}/familias/2
+### Listar categorias
+GET {{api}}/categorias
+### Consultar categoria por ID
+GET {{api}}/categorias/1
+
+### Consultar categoria inexistente
+GET {{api}}/categorias/9999
+### Cadastrar categoria
+POST {{api}}/categorias
+Content-Type: application/json
+
+{
+  "nome": "Higiene",
+  "descricao": "Produtos de higiene pessoal"
+}
+### Atualizar categoria
+PUT {{api}}/categorias/4
+Content-Type: application/json
+
+{
+  "nome": "Higiene e Limpeza",
+  "descricao": "Produtos de higiene pessoal e limpeza"
+}
+### Consultar categoria atualizada
+GET {{api}}/categorias/4
+### Listar itens
+GET {{api}}/itens
+### Consultar item por ID
+GET {{api}}/itens/1
+
+### Consultar item inexistente
+GET {{api}}/itens/9999
+### Cadastrar item
+POST {{api}}/itens
+Content-Type: application/json
+
+{
+  "id_categoria": 4,
+  "nome": "Sabonete",
+  "descricao": "Sabonete para higiene pessoal",
+  "unidade_medida": "unidade"
+}
+### Atualizar item
+PUT {{api}}/itens/3
+Content-Type: application/json
+
+{
+  "id_categoria": 4,
+  "nome": "Sabonete Neutro",
+  "descricao": "Sabonete neutro para higiene pessoal",
+  "unidade_medida": "unidade"
+}
+### Consultar item atualizado
+GET {{api}}/itens/3
+
+
+### Listar todas as doações
+GET {{api}}/doacoes
+
+### Consultar doação por ID
+GET {{api}}/doacoes/1
+
+### Consultar doação inexistente
+GET {{api}}/doacoes/9999
+
+### Cadastrar doação
+POST {{api}}/doacoes
+Content-Type: application/json
+
+{
+  "id_voluntario": 6,
+  "observacao": "Doação de alimentos para famílias assistidas"
+}
+### Consultar voluntário utilizado no cadastro da doação
+GET {{api}}/voluntarios/6
+### Consultar doação recém-cadastrada
+GET {{api}}/doacoes/4
+### Tentar cadastrar doação com voluntário inativo
+POST {{api}}/doacoes
+Content-Type: application/json
+
+{
+  "id_voluntario": 7,
+  "observacao": "Teste com voluntário inativo"
+}
+### Testar cadastro de doação com dados nulos
+POST {{api}}/doacoes
+Content-Type: application/json
+
+{}
+### Testar desativação com ID inválido
+PATCH {{api}}/voluntarios/abc/desativar
+
+### Testar cadastro de família com dados vazios
+POST {{api}}/familias
+Content-Type: application/json
+
+{}
+### Testar atualização de família com dados vazios
+PUT {{api}}/familias/2
+Content-Type: application/json
+
+{}
+### Testar desativação de família com ID inválido
+PATCH {{api}}/familias/abc/desativar
+### Testar cadastro de categoria com dados vazios
+POST {{api}}/categorias
+Content-Type: application/json
+
+{}
+### Testar atualização de categoria com dados vazios
+PUT {{api}}/categorias/4
+Content-Type: application/json
+
+{}
+### Testar cadastro de item com dados vazios
+POST {{api}}/itens
+Content-Type: application/json
+
+{}
+### Testar atualização de item com dados vazios
+PUT {{api}}/itens/3
+Content-Type: application/json
+
+{}
+### Testar cadastro de doação com dados vazios
+POST {{api}}/doacoes
+Content-Type: application/json
+
+{}
+### Testar consulta de doação com ID inválido
+GET {{api}}/doacoes/abc
+### Testar conexão com MySQL
+GET {{api}}/db-test
+### Testar funcionamento geral da API
+GET {{api}}/health
